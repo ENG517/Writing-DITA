@@ -126,26 +126,30 @@
                     </section>
 
                     <section>
-                        <h3><code>&lt;task&gt;</code> best practices</h3>
+                        <h3>Some <code>&lt;task&gt;</code> best practices</h3>
                         <ul>
                           <li class="fragment">
                             One procedure per topic
                           </li>
                           <li class="fragment">
-                            Create subtasks for longer procedures
+                            Every <code>&lt;task&gt;</code> element should have a <em>unique</em> ID attribute: <code>&lt;task id="espresso-connect"&gt;</code>
+                          </li>
+                          <li class="fragment">
+                            Every <code>&lt;step&gt;</code> should use the imperative mood—contained by a <code>&lt;cmd&gt;</code> element.
+                          </li>
+                          <li class="fragment">
+                            Create subtasks for longer procedures (~10 or more steps)
                           </li>
                           <li class="fragment">
                             Combine short, sequential steps
                           </li>
-                          <li class="fragment">
-                            Every step should use an imperative sentence
-                          </li>
-                          <li class="fragment">
-                            Every <code>&lt;task&gt;</code> element should have a meaningful ID attribute: <code>&lt;task id="espresso-connect"&gt;</code>
-                          </li>
                         </ul>
+                        <p class="fragment">
+                          See our <a href="https://docs.google.com/spreadsheets/d/12TKr8tlwgIko_da5D8JlzE4-abD7mPwouKrONwj9EmQ/edit?usp=sharing" target="_blank" rel="noreferrer noopenner">scorecard version in Google Sheets</a>.
+                        </p>
                     </section>
 
+                    <!-- Table of Common Task Elements -->
                     <section>
                       <h3>Common Task Topic Elements</h3>
                       <style>
@@ -280,9 +284,17 @@
                       </table>
                     </section>
 
+                    <!-- task example image from book -->
                     <section>
-                      <img src="img/task-example.png" />
+                      <img src="img/task-example-2.png" />
                     </section>
+
+                    <!-- task example: Gmail create filter -->
+                    <section>
+                      <img src="img/task-gmail-creating-filters.png" />
+                      <p><a href="https://github.com/ENG517/Demo-Task/blob/main/t_creating_filters.dita" target="_blank" rel="noopenner noreferrer">View the code on Github.com</a></p>
+                    </section>
+
                     <!-- Resources -->
                     <section>
                       <h3>Resources</h3>
