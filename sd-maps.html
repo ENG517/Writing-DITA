@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Writing DITA - Lesson</title>
+        <!-- =============================================
+            Adapted and modified content from GU Yiling:
+            http://justineo.github.io/slideshows/writing-css/
+            ==============================================-->
+
+        <meta name="description" content="A review of DITA Topic Types: Task, Concept, and Reference">
+        <meta name="author" content="Chris Lindgren">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/font-awesome.css">
+        <link rel="stylesheet" href="css/just.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="css/zenburn.css">
+
+        <style>
+            var::before {
+                content: "[";
+            }
+            var::after {
+                content: "]";
+            }
+            var::before,
+            var::after {
+                color: #666;
+                font-style: normal;
+            }
+            iframe {
+                box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+            }
+            span.type::before {
+                content: "‘<";
+            }
+            span.type::after {
+                content: ">’";
+            }
+            #overview-list li {
+                list-style-type: none;
+            }
+            #overview-list .fa {
+                display: inline-block;
+                width: 40px;
+            }
+            .left-title {
+              text-align: left;
+            }
+        </style>
+
+        <!-- If the query includes "print-pdf", include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( "link" );
+                link.rel = "stylesheet";
+                link.type = "text/css";
+                link.href = "../../reveal.js/css/print/pdf.css";
+                document.getElementsByTagName( "head" )[0].appendChild( link );
+            }
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+              <!-- SHORTDESC -->
+              <section>
+                <section>
+                  <h1><code>&lt;shortdesc&gt;</code></h1>
+                </section>
+
+                <section>
+                  <h2>What is the <code>&lt;shortdesc&gt;</code>?</h2>
+                  <p>
+                    The first paragraph of any topic. Where can you put it?
+                  </p>
+                  <ul>
+                    <li>
+                      Between the <code>&lt;title&gt;</code> and body elements of standard topics (concept, task, and reference)
+                    <li>
+                      Inside the <code>&lt;abstract&gt;</code> element, which also goes between the <code>&lt;title&gt;</code> and body elements
+                    <li>
+                      Inside a <code>&lt;topicref&gt;</code> element in a DITA map
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>
+                    What's the big deal?
+                    <br />
+                    <small>(Multiple uses)</small>
+                  </h2>
+                  <ul>
+                    <li>
+                      The first paragraph of a topic
+                    <li>
+                      Link previews for related or child topic links
+                    <li>
+                      As abstracts for search engine results
+                  </ul>
+                </section>
+
+                <section>
+                  <figure>
+                    <img src="img/shortdesc-example-1.png" alt="short description example" />
+                    <figcaption>
+                      <p>
+                        (Bellamy et al., p. 56)
+                      </p>
+                    </figcaption>
+                  </figure>
+                </section>
+
+                <section>
+                  <figure>
+                    <img src="img/shortdesc-example-2.png" alt="short description example" />
+                    <figcaption>
+                      <p>
+                        (Bellamy et al., p. 57)
+                      </p>
+                    </figcaption>
+                  </figure>
+                </section>
+
+                <section>
+                  <figure>
+                    <img src="img/shortdesc-example-3.png" alt="short description example" />
+                    <figcaption>
+                      <p>
+                        (Bellamy et al., p. 58)
+                      </p>
+                    </figcaption>
+                  </figure>
+                </section>
+
+                <section>
+                  <h2>
+                    Best Practices <small>(pp. 75-78)</small>
+                  </h2>
+                  <ul>
+                    <li>
+                      Broadly answers 2 questions:
+                    <ul>
+                      <li>
+                        What is the topic about?
+                      <li>
+                        Why do users care about or need the information in the topic?
+                    </ul>
+                    <li>
+                      Specific topic questions:
+                      <br />
+                      Tasks (p. 66), Concepts (p. 69), References (p. 70)
+                    <li>
+                      35-50 words
+                    <li>
+                      Not self-referential, e.g., "This topic describes ..."
+                    <li>
+                      Doesn't repeat the topic title
+                    <li>
+                      No URLs in <code>&lt;xref&gt;</code>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>Example of what not to do</h2>
+                  <figure>
+                    <img src="img/shortdesc-bad-1.png" alt="short description example" />
+                    <figcaption>
+                      <p>
+                        (Bellamy et al., p. 61)
+                      </p>
+                    </figcaption>
+                  </figure>
+                </section>
+
+                <section>
+                  <h2>Example of what not to do</h2>
+                  <figure>
+                    <img src="img/shortdesc-bad-2.png" alt="short description example" />
+                    <figcaption>
+                      <p>
+                        (Bellamy et al., p. 62)
+                      </p>
+                    </figcaption>
+                  </figure>
+                </section>
+
+                <section>
+                  <figure>
+                    <img src="img/shortdesc-example-4.png" alt="short description example" />
+                    <figcaption>
+                      <p>
+                        (Bellamy et al., p. 63)
+                      </p>
+                    </figcaption>
+                  </figure>
+                </section>
+
+              </section>
+              <!-- MAPs -->
+              <section>
+                <section>
+                  <h1><code>&lt;map&gt;</code></h1>
+                </section>
+                <section>
+                  <h2>Overview</h2>
+                  <ul>
+                    <li>
+                      <strong>Include topics in an information set</strong>: Add topics to a DITA map to specify which topics are included in the output.
+                    <li>
+                      <strong>Define information architecture</strong>: Use the DITA map file to define the navigation for a set of topics. Structure topics in a task flow that best meets users’ needs.
+                    <li>
+                      <strong>Create relationships between topics</strong>: Use the hierarchy of topics, relationship tables, and other features in the DITA map to establish relationships between topics.
+                  </ul>
+                </section>
+
+                <section>
+                  <figure>
+                    <img src="img/map-1.png" alt="map example" />
+                    <figcaption>
+                      <p>
+                        Parent-Child Relationships (Bellamy et al., p. 80)
+                      </p>
+                    </figcaption>
+                  </figure>
+                </section>
+
+                <section>
+                  <figure>
+                    <img src="img/map-2.png" alt="map example" />
+                    <figcaption>
+                      <p>
+                        Example map (Bellamy et al., p. 81)
+                      </p>
+                    </figcaption>
+                  </figure>
+                </section>
+
+                <section>
+                  <figure>
+                    <img src="img/map-example-1.png" alt="map example" />
+                    <figcaption>
+                      <p>
+                        Example map with desired architecture (Bellamy et al., p. 82)
+                      </p>
+                    </figcaption>
+                  </figure>
+                </section>
+
+              </section>
+            </div>
+        </div>
+
+        <script src="js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || "linear", // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: "https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg",
+                // parallaxBackgroundSize: "2100px 900px",
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: "js/classList.js", condition: function() { return !document.body.classList; } },
+                    { src: "js/marked.js", condition: function() { return !!document.querySelector( "[data-markdown]" ); } },
+                    { src: "js/markdown.js", condition: function() { return !!document.querySelector( "[data-markdown]" ); } },
+                    { src: "js/highlight.js", async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: "js/zoom.js", async: true, condition: function() { return !!document.body.classList; } },
+                    { src: "js/notes.js", async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+        <script async src="http://assets.codepen.io/assets/embed/ei.js"></script>
+    </body>
+</html>

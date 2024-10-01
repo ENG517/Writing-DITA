@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Writing DITA - Lesson</title>
+        <!-- =============================================
+            Adapted and modified content from GU Yiling:
+            http://justineo.github.io/slideshows/writing-css/
+            ==============================================-->
+
+        <meta name="description" content="A review of DITA Topic Types: Task, Concept, and Reference">
+        <meta name="author" content="Chris Lindgren">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/font-awesome.css">
+        <link rel="stylesheet" href="css/just.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="css/zenburn.css">
+
+        <style>
+            var::before {
+                content: "[";
+            }
+            var::after {
+                content: "]";
+            }
+            var::before,
+            var::after {
+                color: #666;
+                font-style: normal;
+            }
+            iframe {
+                box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+            }
+            span.type::before {
+                content: "‘<";
+            }
+            span.type::after {
+                content: ">’";
+            }
+            #overview-list li {
+                list-style-type: none;
+            }
+            #overview-list .fa {
+                display: inline-block;
+                width: 40px;
+            }
+            .left-title {
+              text-align: left;
+            }
+        </style>
+
+        <!-- If the query includes "print-pdf", include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( "link" );
+                link.rel = "stylesheet";
+                link.type = "text/css";
+                link.href = "../../reveal.js/css/print/pdf.css";
+                document.getElementsByTagName( "head" )[0].appendChild( link );
+            }
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h1>
+                      Writing with <abbr title="Darwin Information Typing Architecture">DITA</abbr> Topics:
+                    </h1>
+                    <p>
+                      <code>&lt;task&gt;</code>, <code>&lt;concept&gt;</code>, &amp; <strong><code>&lt;reference&gt;</code></strong>
+                    </p>
+                </section>
+
+                <!-- OVERVIEW -->
+                <section>
+                  <section>
+                  <h2>Topic Types:</h2>
+                    <ul id="overview-list">
+                      <li>
+                        <code>&lt;task&gt;</code>:
+                        <br />Tells how to do something, and usually includes numbered steps -- a procedure.
+                      </li>
+                      <br />
+                      <li>
+                        <code>&lt;concept&gt;</code>:
+                        <br />Describes something.
+                      </li>
+                      <br />
+                      <li>
+                        <code>&lt;reference&gt;</code>:
+                        <br />Explains details of interest about things and materials, and usually includes information in tables or lists.
+                      </li>
+                    </ul>
+                  </section>
+                </section>
+
+                <!-- REFERENCE -->
+                <section>
+                  <section>
+                      <h2><code>&lt;reference&gt;</code></h2>
+                  </section>
+
+                  <!-- REF OVERVIEW -->
+                  <section>
+                      <h3>What is a <code>&lt;reference&gt;</code>?</h3>
+                      <ul>
+                          <li class="fragment">
+                            Also supports goals of the task topics
+                          </li>
+                          <li class="fragment">
+                            A collection of facts, rather than an explanation about necessary conceptual information
+                          </li>
+                      </ul>
+                  </section>
+
+                  <!-- REF BEST PRACTICES -->
+                  <section>
+                    <h3><code>&lt;reference&gt;</code> best practices</h3>
+                    <ul>
+                        <li class="fragment">
+                          Describe one type of reference information per topic
+                        </li>
+                        <li class="fragment">
+                          Use noun-based phrases for titles
+                        </li>
+                        <li class="fragment">
+                          Write and design for scannability
+                        </li>
+                        <li class="fragment">
+                          Be consistent about design/elements across topics
+                        </li>
+                        <li>
+                          Use the correct type of table (table vs. simple table, vs. properties)
+                        </li>
+                        <li class="fragment">
+                          Difficulty: Modularize reference info or not. Rule of thumb: If more than 2 pages, break it up, logically.
+                        </li>
+                        <li class="fragment">
+                          All <code>&lt;reference&gt;</code> elements require a <code>&lt;section&gt;</code> element
+                        </li>
+                        <li class="fragment">
+                          Do not "paper" (p. 60) your reference topics. Avoid writing topics that the user does not need. (Example: UI icons.)
+                        </li>
+                    </ul>
+                  </section>
+
+                  <!-- REF TABLE -->
+                  <section>
+                    <h3>Common <code>&lt;reference&gt; elements</code></h3>
+                    <table style="font-size: 70%;">
+                        <thead>
+                            <tr>
+                                <th>DITA ELEMENT</th>
+                                <th>DESCRIPTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                              <td><code>&lt;title&gt;</code></td>
+                              <td>Provides the topic title</td>
+                          </tr>
+                          <tr>
+                              <td><code>&lt;shortdesc&gt;</code></td>
+                              <td>Introduces the topic</td>
+                          </tr>
+                          <tr>
+                              <td><code>&lt;refbody&gt;</code></td>
+                              <td>Contains the body of the topic</td>
+                          </tr>
+                          <tr>
+                              <td><code>&lt;section&gt;</code></td>
+                              <td>Organizes content in a topic into sections</td>
+                          </tr>
+                          <tr>
+                              <td><code>&lt;table&gt;</code></td>
+                              <td>Contains the table content</td>
+                          </tr>
+                          <tr>
+                              <td><code>&lt;simpletable&gt;</code></td>
+                              <td>Contains the table content that doesn't require a title</td>
+                          </tr>
+                          <tr>
+                              <td><code>&lt;properties&gt;</code></td>
+                              <td>Lists properties in a table by type, value, and description</td>
+                          </tr>
+                          <tr>
+                              <td><code>&lt;ul&gt;</code></td>
+                              <td>Displays a content as an unordered bulleted list</td>
+                          </tr>
+                          <tr>
+                              <td><code>&lt;dl&gt;</code></td>
+                              <td>Displays a list of terms or short concepts and their definitions</td>
+                          </tr>
+                          <tr>
+                              <td><code>&lt;example&gt;</code></td>
+                              <td>Contains example content that explains or supports the topics</td>
+                          </tr>
+                          <tr>
+                              <td><code>&lt;parml&gt;</code></td>
+                              <td>Displays parameters in a format similar to a definition list</td>
+                          </tr>
+                        </tbody>
+                    </table>
+                  </section>
+
+                  <section>
+                    <img src="img/reference-example-1.png" />
+                  </section>
+
+                  <section>
+                    <img src="img/reference-example-2.png" />
+                  </section>
+                  <!-- REF RESOURCES -->
+                  <section>
+                    <h3>Resources</h3>
+                    <ul>
+                      <li>
+                        DITA 1.2 Spec on the <a href="http://docs.oasis-open.org/dita/v1.2/os/spec/langref/reference.html" target="_blank">reference</a> element
+                      </li>
+                      <li>
+                        Best practice guidelines (Bellamy <span style="font-style:italic;">et al</span>., p. 61).
+                      </li>
+                    </ul>
+                  </section>
+
+                </section>
+                <!-- /END REFERENCE -->
+                
+            </div>
+        </div>
+
+        <script src="js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || "linear", // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: "https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg",
+                // parallaxBackgroundSize: "2100px 900px",
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: "js/classList.js", condition: function() { return !document.body.classList; } },
+                    { src: "js/marked.js", condition: function() { return !!document.querySelector( "[data-markdown]" ); } },
+                    { src: "js/markdown.js", condition: function() { return !!document.querySelector( "[data-markdown]" ); } },
+                    { src: "js/highlight.js", async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: "js/zoom.js", async: true, condition: function() { return !!document.body.classList; } },
+                    { src: "js/notes.js", async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+        <script async src="http://assets.codepen.io/assets/embed/ei.js"></script>
+    </body>
+</html>

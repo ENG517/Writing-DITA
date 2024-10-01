@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Writing DITA - Lesson</title>
+        <!-- =============================================
+            Adapted and modified content from GU Yiling:
+            http://justineo.github.io/slideshows/writing-css/
+            ==============================================-->
+
+        <meta name="description" content="A review of DITA Topic Types: Task, Concept, and Reference">
+        <meta name="author" content="Chris Lindgren">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/font-awesome.css">
+        <link rel="stylesheet" href="css/just.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="css/zenburn.css">
+
+        <style>
+            var::before {
+                content: "[";
+            }
+            var::after {
+                content: "]";
+            }
+            var::before,
+            var::after {
+                color: #666;
+                font-style: normal;
+            }
+            iframe {
+                box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+            }
+            span.type::before {
+                content: "‘<";
+            }
+            span.type::after {
+                content: ">’";
+            }
+            #overview-list li {
+                list-style-type: none;
+            }
+            #overview-list .fa {
+                display: inline-block;
+                width: 40px;
+            }
+            .left-title {
+              text-align: left;
+            }
+        </style>
+
+        <!-- If the query includes "print-pdf", include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( "link" );
+                link.rel = "stylesheet";
+                link.type = "text/css";
+                link.href = "../../reveal.js/css/print/pdf.css";
+                document.getElementsByTagName( "head" )[0].appendChild( link );
+            }
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h1>
+                      Writing with <abbr title="Darwin Information Typing Architecture">DITA</abbr> Topics:
+                    </h1>
+                    <p>
+                      <code>&lt;task&gt;</code>, <strong><code>&lt;concept&gt;</code></strong> &amp; <code>&lt;reference&gt;</code>
+                    </p>
+                </section>
+
+                <!-- OVERVIEW -->
+                <section>
+                  <section>
+                  <h2>Topic Types:</h2>
+                    <ul id="overview-list">
+                      <li>
+                        <code>&lt;task&gt;</code>:
+                        <br />Tells how to do something, and usually includes numbered steps -- a procedure.
+                      </li>
+                      <br />
+                      <li>
+                        <code>&lt;concept&gt;</code>:
+                        <br />Describes something.
+                      </li>
+                      <br />
+                      <li>
+                        <code>&lt;reference&gt;</code>:
+                        <br />Explains details of interest about things and materials, and usually includes information in tables or lists.
+                      </li>
+                    </ul>
+                  </section>
+                </section>
+
+                <!-- CONCEPT -->
+                <section>
+                  <section>
+                      <h2><code>&lt;concept&gt;</code></h2>
+                  </section>
+
+                  <!-- CONCEPT OVERVIEW -->
+                  <section>
+                      <h3>What is a <code>&lt;concept&gt;</code>? <small>(Bellamy et al., p. 41)</small></h3>
+                      <ul>
+                        <li class="fragment">
+                          Supports the goals of the task topics
+                        </li>
+                        <li class="fragment">
+                          Describe a system, product, or solution
+                        </li>
+                        <li class="fragment">
+                          Explain features, components, characteristics, restrictions, or capabilities
+                        </li>
+                        <li class="fragment">
+                          Define terms in more detail than you would in a glossary
+                        </li>
+                        <li class="fragment">
+                          Provides background information that users might need before their task(s)
+                        </li>
+                      </ul>
+                  </section>
+
+                  <!-- CONCEPT BEST PRACTICES -->
+                  <section>
+                      <h3><code>&lt;concept&gt;</code> best practices</h3>
+                      <ul>
+                        <li class="fragment">
+                          Describe one concept per topic
+                        </li>
+                        <li class="fragment">
+                          Use noun-based phrases for titles
+                        </li>
+                        <li class="fragment">
+                          Use <code>&lt;section&gt;</code> elements to break-up longer concepts
+                        </li>
+                        <li class="fragment">
+                          Use titles for each section
+                        </li>
+                        <li class="fragment">
+                          Use images or other media to aid your concepts
+                        </li>
+                        <li class="fragment">
+                          Use the <code>&lt;term&gt;</code> tag sparingly for most prominent cases of special terminology / jargon.
+                        </li>
+                      </ul>
+                  </section>
+
+                  <!-- CONCEPT TABLE -->
+                  <section>
+                    <h3>Common <code>&lt;concept&gt; elements</code></h3>
+                    <table style="font-size: 70%;">
+                        <thead>
+                            <tr>
+                                <th>DITA ELEMENT</th>
+                                <th>DESCRIPTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                              <td><code>&lt;title&gt;</code></td>
+                              <td>Provides the topic title</td>
+                          </tr>
+                          <tr>
+                              <td><code>&lt;shortdesc&gt;</code></td>
+                              <td>Introduces the topic</td>
+                          </tr>
+                          <tr>
+                              <td><code>&lt;conbody&gt;</code></td>
+                              <td>Contains the body of the topic</td>
+                          </tr>
+                          <tr>
+                              <td><code>&lt;section&gt;</code></td>
+                              <td>Organizes content in a topic into sections</td>
+                          </tr>
+                          <tr>
+                              <td><code>&lt;sl&gt;</code></td>
+                              <td>Displays a list of short or simple items</td>
+                          </tr>
+                          <tr>
+                              <td><code>&lt;ul&gt;</code></td>
+                              <td>Displays a content as an unordered bulleted list</td>
+                          </tr>
+                          <tr>
+                              <td><code>&lt;dl&gt;</code></td>
+                              <td>Displays a list of terms or short concepts and their definitions</td>
+                          </tr>
+                          <tr>
+                              <td><code>&lt;fig&gt;</code> or <code>&lt;img&gt;</code></td>
+                              <td>Provides a figure and caption so that you can insert graphics</td>
+                          </tr>
+                          <tr>
+                              <td><code>&lt;term&gt;</code></td>
+                              <td>Highlights new terms</td>
+                          </tr>
+                        </tbody>
+                    </table>
+                  </section>
+
+                  <section>
+                    <img src="img/concept-example.png" />
+                  </section>
+
+                  <section>
+                    <h3>Resources</h3>
+                    <ul>
+                      <li>
+                        DITA 1.2 Spec on the <a href="http://docs.oasis-open.org/dita/v1.2/os/spec/langref/concept.html" target="_blank">concept</a> element
+                      </li>
+                      <li>
+                        Best practice guidelines (Bellamy <span style="font-style:italic;">et al</span>., p. 50).
+                      </li>
+                    </ul>
+                  </section>
+
+                </section>
+                <!-- /END CONCEPT -->
+                
+            </div>
+        </div>
+
+        <script src="js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || "linear", // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: "https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg",
+                // parallaxBackgroundSize: "2100px 900px",
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: "js/classList.js", condition: function() { return !document.body.classList; } },
+                    { src: "js/marked.js", condition: function() { return !!document.querySelector( "[data-markdown]" ); } },
+                    { src: "js/markdown.js", condition: function() { return !!document.querySelector( "[data-markdown]" ); } },
+                    { src: "js/highlight.js", async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: "js/zoom.js", async: true, condition: function() { return !!document.body.classList; } },
+                    { src: "js/notes.js", async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+        <script async src="http://assets.codepen.io/assets/embed/ei.js"></script>
+    </body>
+</html>
