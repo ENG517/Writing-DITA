@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Writing DITA: XML Basics</title>
+        <!-- =============================================
+            Adapted and modified content from GU Yiling:
+            http://justineo.github.io/slideshows/writing-css/
+            ==============================================-->
+
+        <meta name="description" content="A review of DITA Topic Types: Task, Concept, and Reference">
+        <meta name="author" content="Chris Lindgren">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/font-awesome.css">
+        <link rel="stylesheet" href="css/just.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="css/zenburn.css">
+
+        <style>
+            var::before {
+                content: "[";
+            }
+            var::after {
+                content: "]";
+            }
+            var::before,
+            var::after {
+                color: #666;
+                font-style: normal;
+            }
+            iframe {
+                box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+            }
+            span.type::before {
+                content: "‘<";
+            }
+            span.type::after {
+                content: ">’";
+            }
+            #overview-list li {
+                list-style-type: none;
+            }
+            #overview-list .fa {
+                display: inline-block;
+                width: 40px;
+            }
+            .left-title {
+              text-align: left;
+            }
+        </style>
+
+        <!-- If the query includes "print-pdf", include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( "link" );
+                link.rel = "stylesheet";
+                link.type = "text/css";
+                link.href = "../../reveal.js/css/print/pdf.css";
+                document.getElementsByTagName( "head" )[0].appendChild( link );
+            }
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h1>
+                      Writing with <abbr title="Darwin Information Typing Architecture">DITA</abbr> Topics:
+                    </h1>
+                    <p>
+                      XML Basics
+                    </p>
+                </section>
+
+                <!-- OVERVIEW -->
+                <section>
+                  <section>
+                  <h2>Topic Types:</h2>
+                    <ul id="overview-list">
+                      <li>
+                        <code>&lt;task&gt;</code>:
+                        <br />Tells how to do something, and usually includes numbered steps -- a procedure.
+                      </li>
+                      <br />
+                      <li>
+                        <code>&lt;concept&gt;</code>:
+                        <br />Describes something.
+                      </li>
+                      <br />
+                      <li>
+                        <code>&lt;reference&gt;</code>:
+                        <br />Explains details of interest about things and materials, and usually includes information in tables or lists.
+                      </li>
+                    </ul>
+                  </section>
+                </section>
+
+                <!-- TASK -->
+                <section>
+
+                    <section>
+                        <h2><code>&lt;task&gt;</code></h2>
+                    </section>
+
+                    <section>
+                        <h3>What is a <code>&lt;task&gt;</code>?</h3>
+                        <ul>
+                            <li class="fragment">
+                              Topic dedicated to procedural information
+                            </li>
+                            <li class="fragment">
+                              <code>&lt;concept&gt;</code> and <code>&lt;reference&gt;</code> topics support task topics, but are written in different <code>.dita</code> files.
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Some <code>&lt;task&gt;</code> best practices</h3>
+                        <ul>
+                          <li class="fragment">
+                            One procedure per topic
+                          </li>
+                          <li class="fragment">
+                            Every <code>&lt;task&gt;</code> element should have a <em>unique</em> ID attribute: <code>&lt;task id="espresso-connect"&gt;</code>
+                          </li>
+                          <li class="fragment">
+                            Every <code>&lt;step&gt;</code> should use the imperative mood—contained by a <code>&lt;cmd&gt;</code> element.
+                          </li>
+                          <li class="fragment">
+                            Create subtasks for longer procedures (~10 or more steps)
+                          </li>
+                          <li class="fragment">
+                            Combine short, sequential steps
+                          </li>
+                        </ul>
+                        <p class="fragment">
+                          See our <a href="https://docs.google.com/spreadsheets/d/12TKr8tlwgIko_da5D8JlzE4-abD7mPwouKrONwj9EmQ/edit?usp=sharing" target="_blank" rel="noreferrer noopenner">scorecard version in Google Sheets</a>.
+                        </p>
+                    </section>
+
+                    <!-- Table of Common Task Elements -->
+                    <section>
+                      <h3>Common Task Topic Elements</h3>
+                      <style>
+                        .table__left_aligned_no_padding {
+                          font-size: 1rem !important;
+                          & th,
+                          & td {
+                            padding: 0 !important;
+                            text-align: left !important;
+                          }
+                        }
+                      </style>
+                      <table class="table__left_aligned_no_padding">
+                          <thead>
+                              <tr>
+                                  <th>ELEMENT</th>
+                                  <th>DESCRIPTION</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                            <!-- task -->
+                            <tr>
+                              <td><code>&lt;<a href="https://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/technicalContent/task.html" target="_blank" rel="noopenner noreferrer">task</a>&gt;</code></td>
+                              <td>Main containing element of a task topic; answers the "How to ...?" question.</td>
+                            </tr>
+                            <!-- taskbody -->
+                            <tr>
+                              <td><code>&lt;<a href="https://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/technicalContent/taskbody.html" target="_blank" rel="noopenner noreferrer">taskbody</a>&gt;</code></td>
+                              <td>Contains information specific to completing a task.</td>
+                            </tr>
+                            <!-- title -->
+                            <tr>
+                              <td><code>&lt;<a href="http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/base/title.html" target="_blank" rel="noopenner noreferrer">title</a>&gt;</code></td>
+                              <td>Provides the topic title</td>
+                            </tr>
+                            <!-- shortdesc -->
+                            <tr>
+                                <td><code>&lt;<a href="http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/base/shortdesc.html" target="_blank" rel="noopenner noreferrer">shortdesc</a>&gt;</code></td>
+                                <td>Introduces the task</td>
+                            </tr>
+                            <!-- prereq -->
+                            <tr>
+                                <td><code>&lt;<a href="https://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/technicalContent/prereq.html" target="_blank" rel="noopenner noreferrer">prereq</a>&gt;</code></td>
+                                <td>Prerequisites that the user needs to know or do before starting the current task</td>
+                            </tr>
+                            <!-- context -->
+                            <tr>
+                                <td><code>&lt;<a href="https://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/technicalContent/context.html" target="_blank" rel="noopenner noreferrer">context</a>&gt;</code></td>
+                                <td>Background information for users to understand task</td>
+                            </tr>
+                            <!-- steps -->
+                            <tr>
+                                <td><code>&lt;<a href="https://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/technicalContent/steps.html" target="_blank" rel="noopenner noreferrer">steps</a>&gt;</code></td>
+                                <td>Contains ordered steps for the entire procedure</td>
+                            </tr>
+                            <!-- unordered steps -->
+                            <tr>
+                                <td><code>&lt;<a href="https://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/technicalContent/steps-unordered.html" target="_blank" rel="noopenner noreferrer">steps-unordered</a>&gt;</code></td>
+                                <td>Contains unordered steps for the entire procedure</td>
+                            </tr>
+                            <!-- step -->
+                            <tr>
+                                <td><code>&lt;<a href="https://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/technicalContent/step.html" target="_blank" rel="noopenner noreferrer">step</a>&gt;</code></td>
+                                <td>Represents one action in the procedure; contained within <code>&lt;steps&gt;</code> or <code>&lt;steps-unordered&gt;</code></td>
+                            </tr>
+                            <!-- cmd -->
+                            <tr>
+                              <td><code>&lt;<a href="https://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/technicalContent/cmd.html" target="_blank" rel="noopenner noreferrer">cmd</a>&gt;</code></td>
+                              <td>A command: An imperative statement of the <code>&lt;step&gt;</code>; Required.</td>
+                            </tr>
+                            <!-- substeps -->
+                            <tr>
+                              <td><code>&lt;<a href="https://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/technicalContent/substeps.html" target="_blank" rel="noopenner noreferrer">substeps</a>&gt;</code></td>
+                              <td>Breaks down a <code>&lt;step&gt;</code> into separate actions; Use sparingly, if more than one nested <code>&lt;substeps&gt;</code>, then rewrite as separate task topic.</td>
+                            </tr>
+                            <!-- substep -->
+                            <tr>
+                              <td><code>&lt;<a href="https://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/technicalContent/substep.html" target="_blank" rel="noopenner noreferrer">substep</a>&gt;</code></td>
+                              <td>Same structure as <code>&lt;step&gt;</code>. But, a <code>&lt;substep&gt;</code> cannot include nested numbered steps.</td>
+                            </tr>
+                            <!-- info -->
+                            <tr>
+                                <td><code>&lt;<a href="https://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/technicalContent/info.html" target="_blank" rel="noopenner noreferrer">info</a>&gt;</code></td>
+                                <td>Provides additional info about the step, when needed.</td>
+                            </tr>
+                            <!-- stepresult -->
+                            <tr>
+                              <td><code>&lt;<a href="https://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/technicalContent/stepresult.html" target="_blank" rel="noopenner noreferrer">stepresult</a>&gt;</code></td>
+                              <td>What happens when step is completed</td>
+                            </tr>
+                            <!-- result -->
+                            <tr>
+                              <td><code>&lt;<a href="https://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/technicalContent/result.html" target="_blank" rel="noopenner noreferrer">result</a>&gt;</code></td>
+                              <td>Expected outcome when entire task is done</td>
+                            </tr>
+                            <!-- stepxmp -->
+                            <tr>
+                              <td><code>&lt;<a href="https://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/technicalContent/stepxmp.html" target="_blank" rel="noopenner noreferrer">stepxmp</a>&gt;</code></td>
+                              <td>An example of what happens when step is completed</td>
+                            </tr>
+                            <!-- example -->
+                            <tr>
+                              <td><code>&lt;<a href="https://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/base/example.html" target="_blank" rel="noopenner noreferrer">example</a>&gt;</code></td>
+                              <td>Example that supports the broader task, rather than specific step.</td>
+                            </tr>
+                            <!-- choices -->
+                            <tr>
+                              <td>
+                                <code>&lt;<a href="https://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/technicalContent/choices.html" target="_blank" rel="noopenner noreferrer">choices</a>&gt;</code> > <code>&lt;<a href="https://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/technicalContent/choice.html" target="_blank" rel="noopenner noreferrer">choice</a>&gt;</code>
+                              </td>
+                              <td>Displays choices in a bulleted list. Each <code>&lt;choice&gt;</code> is contained by <code>&lt;choices&gt;</code>.</td>
+                            </tr>
+                            <!-- choicetable -->
+                            <tr>
+                              <td>
+                                <code>&lt;<a href="" target="_blank" rel="noopenner noreferrer">choicetable</a>&gt;</code>
+                              </td>
+                              <td>Displays choices in a 2-column table. Describe steps for each choice</td>
+                            </tr>
+                            <!-- postreq -->
+                            <tr>
+                              <td><code>&lt;<a href="https://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/technicalContent/postreq.html" target="_blank" rel="noopenner noreferrer">postreq</a>&gt;</code></td>
+                              <td>Info about what must be done after task is completed</td>
+                            </tr>
+                            <!-- fig -->
+                            <tr>
+                              <td><code>&lt;<a href="https://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/base/fig.html" target="_blank" rel="noopenner noreferrer">fig</a>&gt;</code></td>
+                              <td>Figure with optional <code>&lt;title&gt;</code>. Can contain range of objects, including text and images.</td>
+                            </tr>
+                            
+                          </tbody>
+                      </table>
+                    </section>
+
+                    <!-- task example image from book -->
+                    <section>
+                      <img src="img/task-example-2.png" />
+                    </section>
+
+                    <!-- task example: Gmail create filter -->
+                    <section>
+                      <img src="img/task-gmail-creating-filters.png" />
+                      <p><a href="https://github.com/ENG517/Demo-Task/blob/main/t_creating_filters.dita" target="_blank" rel="noopenner noreferrer">View the code on Github.com</a></p>
+                    </section>
+
+                    <!-- Resources -->
+                    <section>
+                      <h3>Resources</h3>
+                      <ul>
+                          <li>
+                            DITA 1.3 spec on the <a href="https://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/containers/task-elements.html#task2" target="_blank" rel="noopenner noreferrer">task</a> element
+                          </li>
+                          <li>
+                            Best practice guidelines (Bellamy <span style="font-style:italic;">et al</span>., pp. 39-40), which I have translated as a <a href="https://docs.google.com/spreadsheets/d/12TKr8tlwgIko_da5D8JlzE4-abD7mPwouKrONwj9EmQ/edit?usp=sharing" target="_blank" rel="noreferrer noopenner">scorecard in Google Sheets</a>.
+                          </li>
+                      </ul>
+                    </section>
+
+                </section>
+                <!-- /END TASK -->
+                
+            </div>
+        </div>
+
+        <script src="js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || "linear", // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: "https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg",
+                // parallaxBackgroundSize: "2100px 900px",
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: "js/classList.js", condition: function() { return !document.body.classList; } },
+                    { src: "js/marked.js", condition: function() { return !!document.querySelector( "[data-markdown]" ); } },
+                    { src: "js/markdown.js", condition: function() { return !!document.querySelector( "[data-markdown]" ); } },
+                    { src: "js/highlight.js", async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: "js/zoom.js", async: true, condition: function() { return !!document.body.classList; } },
+                    { src: "js/notes.js", async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+        <script async src="http://assets.codepen.io/assets/embed/ei.js"></script>
+    </body>
+</html>
